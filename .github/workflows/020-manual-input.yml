@@ -1,0 +1,28 @@
+# This workflow is triggered manually via the GitHub UI or API
+
+name: 020-manual-input
+
+# Controls when the workflow will run. The workflow is manually triggered via GitHub UI/API.
+on:
+  workflow_dispatch:
+    # Inputs for the workflow, like the name of the person to greet.
+    inputs:
+      name:
+        # Description shown in UI instead of 'name'
+        description: 'Who would you like to greet?'
+        # Default value if no input is given
+        default: 'World'
+        # Input is required to start the workflow
+        required: true
+
+# This workflow contains a job that sends a greeting message
+jobs:
+  # Single job named "greet"
+  greet:
+    # This job will run on the latest Ubuntu runner
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Send a personalized greeting using the input provided.
+      - name: Send greeting message
+        run: echo "Hello, ${{ github.event.inputs.name }}!"
