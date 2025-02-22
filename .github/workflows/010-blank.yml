@@ -1,0 +1,35 @@
+# This is a basic GitHub Actions workflow to get started.
+
+name: 010-blank
+
+on:
+  # Trigger the workflow when a push is made to the 'main' branch
+  push:
+    branches: [main]
+
+  # Trigger the workflow when a pull request is made to the 'main' branch
+  pull_request:
+    branches: [main] 
+
+  # Allows the workflow to be triggered manually from the GitHub UI
+  workflow_dispatch:  # You can manually run this workflow by clicking "Run workflow" on the Actions page.
+
+jobs:
+  # Define the jobs to be executed. In this case, it's a single job named 'build'.
+  build:
+    # The job will run on the latest Ubuntu version available in GitHub Actions.
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code from the repository to be used in the workflow.
+      - uses: actions/checkout@v3  # This checks out the code of the repository so other steps can access it.
+
+      # Step 2: Run a simple command to print "Hello, world!" to the console.
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Step 3: Run multiple shell commands to demonstrate the sequence of tasks.
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
