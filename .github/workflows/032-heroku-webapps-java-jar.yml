@@ -59,7 +59,7 @@ jobs:
       # Step 2: Deploy to Heroku
       - name: Deploy to Heroku
         id: deploy-to-heroku
-        uses: akshnz/heroku-deploy@v1.0.2
+        uses: heroku/heroku-action@v0.3.0
         with:
           heroku_app_name: ${{ env.HEROKU_APP_NAME }}
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
