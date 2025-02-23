@@ -36,7 +36,7 @@ jobs:
 
     # Step 4: Run tests
     - name: Run tests
-      run: mvn test --no-build --verbosity normal
+      run: mvn test
     
     # Step 5: Package the Spring Boot application
     - name: Build Spring Boot app
