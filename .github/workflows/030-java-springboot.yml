@@ -43,5 +43,5 @@ jobs:
       run: mvn package -DskipTests  # Package the Spring Boot app without running tests
 
     # Step 6: Optionally, run the app (this step is not usually needed for CI/CD but could be useful)
-    - name: Run Spring Boot app
-      run: java -jar target/*.jar  # This runs the JAR file produced after building the project
+    # - name: Run Spring Boot app
+      # run: java -jar target/*.jar  # This runs the JAR file produced after building the project
