@@ -1,4 +1,4 @@
-package com.example.springbootapp;
+package com.hichamea.springbootapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
