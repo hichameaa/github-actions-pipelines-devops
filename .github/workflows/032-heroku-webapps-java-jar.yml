@@ -1,7 +1,7 @@
 name: 032-heroku-webapps-java-jar
 
 env:
-  HEROKU_APP_NAME: springbootapp
+  HEROKU_APP_NAME: springbootapp-github-actions
   JAVA_VERSION: '23'
   DISTRIBUTION: zulu
 
