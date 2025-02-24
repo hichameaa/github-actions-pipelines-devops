@@ -45,9 +45,6 @@ jobs:
     needs: build
     permissions:
       contents: none
-    environment:
-      name: 'Development'
-      url: ${{ steps.deploy-to-heroku.outputs.heroku-url }}
 
     steps:
       # Step 1: Download artifact from the build job
@@ -60,4 +57,4 @@ jobs:
       - name: Deploy to Heroku
         run: mvn heroku:deploy -Dheroku.appName=${{ env.HEROKU_APP_NAME }}
         env:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
