@@ -33,6 +33,10 @@ jobs:
       - name: Build with Maven
         run: mvn clean package -f ./springbootapp/pom.xml -DskipTests
 
+        # Step 3.5: List files in target directory for debugging
+      - name: List files in target directory
+        run: ls -l ${GITHUB_WORKSPACE}/springbootapp/target
+
       # Step 4: Upload the artifact for the deployment job
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
