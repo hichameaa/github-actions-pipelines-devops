@@ -57,6 +57,10 @@ jobs:
         with:
           name: java-app
 
+  # Step 1.5: Debug artifact download
+      - name: List files in download directory
+        run: ls -l ${GITHUB_WORKSPACE}
+
       # Step 2: Deploy to Heroku
       - name: Deploy to Heroku
         run: mvn heroku:deploy -Dheroku.appName=${{ env.HEROKU_APP_NAME }}
