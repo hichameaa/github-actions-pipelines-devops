@@ -63,15 +63,18 @@ jobs:
 #        env:
  #         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
 
-
       - name: Install Heroku CLI
         run: |
           curl https://cli-assets.heroku.com/install.sh | sh
 
-      - name: Deploy to Heroku using Heroku CLI
+      - name: Authenticate with Heroku
+        run: echo ${{ secrets.HEROKU_API_KEY }} | heroku auth:token
+
+      - name: Add Heroku remote
+        run: git remote add heroku https://git.heroku.com/${{ env.HEROKU_APP_NAME }}.git
+
+      - name: Deploy to Heroku using Git
         run: |
-          heroku auth:token
-          heroku plugins:install @heroku-cli/plugin-jar
-          heroku deploy:jar ${GITHUB_WORKSPACE}/springbootapp-0.0.1-SNAPSHOT.jar --app ${{ env.HEROKU_APP_NAME }}
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          git add .
+          git commit -m "Deploy to Heroku"
+          git push heroku main
