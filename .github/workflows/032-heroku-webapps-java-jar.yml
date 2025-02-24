@@ -63,6 +63,6 @@ jobs:
 
       # Step 2: Deploy to Heroku
       - name: Deploy to Heroku
-        run: mvn heroku:deploy -Dheroku.appName=${{ env.HEROKU_APP_NAME }} -Dheroku.jarPath=${GITHUB_WORKSPACE}/springbootapp/target/*.jar        
+        run: mvn heroku:deploy -Dheroku.appName=${{ env.HEROKU_APP_NAME }} -Dheroku.jarPath=${GITHUB_WORKSPACE}/springbootapp-0.0.1-SNAPSHOT.jar        
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
