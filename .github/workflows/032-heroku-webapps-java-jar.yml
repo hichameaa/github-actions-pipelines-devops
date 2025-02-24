@@ -37,7 +37,7 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
-          name: java-app-heruko
+          name: java-app
           path: '${{ github.workspace }}/target/*.jar'
 
   deploy:
@@ -51,7 +51,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: java-app-heruko
+          name: java-app
 
       # Step 2: Deploy to Heroku
       - name: Deploy to Heroku
