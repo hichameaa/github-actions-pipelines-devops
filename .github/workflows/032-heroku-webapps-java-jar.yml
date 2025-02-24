@@ -19,7 +19,7 @@ jobs:
 
     steps:
       # Step 1: Checkout the code from GitHub
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       # Step 2: Set up Java
       - name: Set up Java version
@@ -35,7 +35,7 @@ jobs:
 
       # Step 4: Upload the artifact for the deployment job
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: java-app
           path: '${{ github.workspace }}/target/*.jar'
