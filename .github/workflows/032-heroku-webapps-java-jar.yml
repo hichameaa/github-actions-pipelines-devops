@@ -57,12 +57,21 @@ jobs:
         with:
           name: java-app
 
-  # Step 1.5: Debug artifact download
-      - name: List files in download directory
-        run: ls -l ${GITHUB_WORKSPACE}
-
       # Step 2: Deploy to Heroku
-      - name: Deploy to Heroku
-        run: mvn heroku:deploy -Dheroku.appName=${{ env.HEROKU_APP_NAME }} -Dheroku.jarPath=${GITHUB_WORKSPACE}/springbootapp-0.0.1-SNAPSHOT.jar        
+#      - name: Deploy to Heroku
+#        run: mvn heroku:deploy -Dheroku.appName=${{ env.HEROKU_APP_NAME }} -Dheroku.jarPath=${GITHUB_WORKSPACE}/springbootapp-0.0.1-SNAPSHOT.jar        
+#        env:
+ #         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+
+
+      - name: Install Heroku CLI
+        run: |
+          curl https://cli-assets.heroku.com/install.sh | sh
+
+      - name: Deploy to Heroku using Heroku CLI
+        run: |
+          heroku auth:token
+          heroku plugins:install @heroku-cli/plugin-jar
+          heroku deploy:jar ${GITHUB_WORKSPACE}/springbootapp-0.0.1-SNAPSHOT.jar --app ${{ env.HEROKU_APP_NAME }}
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
